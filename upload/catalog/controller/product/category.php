@@ -105,7 +105,7 @@ class Category extends \Opencart\System\Engine\Controller {
 				'href' => $this->url->link('product/category', 'language=' . $this->config->get('config_language') . '&path=' . $this->request->get['path'])
 			];
 
-			if (is_file(DIR_IMAGE . html_entity_decode($category_info['image'], ENT_QUOTES, 'UTF-8'))) {
+			if (is_file(DIR_IMAGE . html_entity_decode($category_info['image'] ?? '', ENT_QUOTES, 'UTF-8'))) {
 				$data['thumb'] = $this->model_tool_image->resize(html_entity_decode($category_info['image'], ENT_QUOTES, 'UTF-8'), $this->config->get('config_image_category_width'), $this->config->get('config_image_category_height'));
 			} else {
 				$data['thumb'] = '';
